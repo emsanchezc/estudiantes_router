@@ -4,6 +4,7 @@ import { translation } from '../assets/translation';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../store/slices/auth/AuthSlices';
 import { useNavigate } from 'react-router-dom';
+import { getToken } from '../services/token';
 
 
 
@@ -23,10 +24,13 @@ const Login = () => {
     const [ email, setEmail] = useState('');
     const [ identificacion, setIdentificacion ] = useState('');
 
-    const crearSesion = (e) => {
+    const crearSesion = async (e) => {
         e.preventDefault();        
-        const token = '123456789';
-        dispatch(login({id: identificacion, correo: email, token: token}));
+        // const token = '123456789';
+
+        const token = await getToken({identificacion, correo: email});
+
+        dispatch(login({id: identificacion, correo: email, token}));
         navigate('/*');
     }
 
