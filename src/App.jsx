@@ -1,6 +1,6 @@
 import React from 'react'
 import MainTemplate from './templates/MainTemplate'
-import Login from './pages/Login'
+import Login from './pages/LoginFormik'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
